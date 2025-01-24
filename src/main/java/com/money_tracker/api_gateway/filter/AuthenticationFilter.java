@@ -47,15 +47,12 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     RestClient restClient = RestClient.create();
 
                     // Make the request to the authentication service to validate the token
-                    Boolean isValidToken = restClient.get()
-                            .uri("http://localhost:8090/api/auth/validate/token?token=" + authHeaderToken)
+                    String isValidToken = restClient.get()
+                            .uri("http://localhost:5001/api/auth/validate/token?token=" + authHeaderToken)
                             .retrieve()
-                            .body(Boolean.class); // Get the response body as a Boolean
+                            .body(String.class);
 
-                    // If the token is invalid (false), throw an exception to stop further
-                    // processing
-                    if (isValidToken == null || !isValidToken) {
-                        // throw new RuntimeException("Invalid Token");
+                    if (isValidToken == null) {
                         return Mono.error(
                                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid Token"));
                     }

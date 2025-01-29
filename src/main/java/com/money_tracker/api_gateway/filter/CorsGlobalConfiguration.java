@@ -13,7 +13,7 @@ public class CorsGlobalConfiguration {
     public CorsWebFilter corsFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.setAllowCredentials(true);
-        corsConfig.addAllowedOrigin("http://localhost:5175"); // Allow all origins
+        corsConfig.addAllowedOrigin("http://localhost:5173"); // Allow all origins
         corsConfig.addAllowedHeader("*"); // Allow all headers
         corsConfig.addAllowedMethod("*"); // Allow all methods
 

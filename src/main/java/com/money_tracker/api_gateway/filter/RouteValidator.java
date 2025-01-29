@@ -12,7 +12,8 @@ public class RouteValidator {
         public static final List<String> openApiEndpoints = List.of(
                         "/api/auth/register",
                         "/api/auth/validate/user",
-                        "/api/auth/validate/token");
+                        "/api/auth/validate/token",
+                        "/api/auth/cronJob");
         public Predicate<ServerHttpRequest> isSecured = request -> openApiEndpoints
                         .stream()
                         .noneMatch(uri -> request
